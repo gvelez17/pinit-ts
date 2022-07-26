@@ -1,5 +1,5 @@
 
-import { get_composeClient } from './provide_composites.js';
+import { getClient } from './composite_client.js';
 
 import { gql } from '@apollo/client'
 
@@ -15,19 +15,15 @@ const CREATE_MUTATION = gql`
   }
 `
 
-export async function addTodo(assignee:any) {
-    if (!req.query.todo) {
-      return res.status(400).send("todo parameter required.");
-    }
-
+export async function addTodo(content:any, assignee:any) {
     // // figure out which mutation to use and with what parameters 
-    const client = await get_composeClient()
+    const client = await getClient()
     const result = await client.mutate({
       mutation: CREATE_MUTATION,
       variables: {
         input: {
           content: {
-            content: req.query.todo,
+            content: content,
             assignee: assignee,
             completed: false,
           }
@@ -35,5 +31,4 @@ export async function addTodo(assignee:any) {
       }
     })
 
-    return res.status(200).json(result);
   }
