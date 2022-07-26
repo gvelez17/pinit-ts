@@ -47,6 +47,7 @@ async function start(): Promise<void> {
         new HelpCommand(),
         new InfoCommand(),
         new TestCommand(),
+        new TodoCommand(),
         // User Context Commands
         new ViewDateJoined(),
         // Message Context Commands
