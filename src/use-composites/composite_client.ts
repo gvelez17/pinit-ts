@@ -1,5 +1,5 @@
 import { ComposeClient } from '@composedb/client';
-import { definition } from './models/runtime.merged.composite';
+import { definition } from './models/runtime.merged.composite.js';
 import { Ed25519Provider } from 'key-did-provider-ed25519'
 import * as ThreeIdResolver from '@ceramicnetwork/3id-did-resolver'
 import * as KeyDidResolver from 'key-did-resolver'
@@ -9,8 +9,8 @@ import { DID } from 'dids'
 import { CeramicClient } from '@ceramicnetwork/http-client'
 import * as u8a from 'uint8arrays'
 import { ApolloClient, ApolloLink, InMemoryCache, NormalizedCacheObject, Observable } from '@apollo/client'
-import { relayStylePagination } from '@apollo/client/utilities'
-import config from './composite_config.json'
+import { relayStylePagination } from '@apollo/client/utilities/utilities.cjs'
+import config from './composite_config.json' assert { type: 'json' };
 
 const SEED = config.did_seed
 
