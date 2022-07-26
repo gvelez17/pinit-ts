@@ -8,7 +8,7 @@ import { Resolver } from 'did-resolver'
 import { DID } from 'dids'
 import { CeramicClient } from '@ceramicnetwork/http-client'
 import * as u8a from 'uint8arrays'
-import { ApolloClient, ApolloLink, InMemoryCache, NormalizedCacheObject, Observable } from '@apollo/client'
+import { ApolloClient, ApolloLink, InMemoryCache, NormalizedCacheObject, Observable } from '@apollo/client/core/index.js'
 import { relayStylePagination } from '@apollo/client/utilities/utilities.cjs'
 import config from './composite_config.json' assert { type: 'json' };
 

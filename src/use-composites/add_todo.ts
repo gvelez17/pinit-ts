@@ -1,7 +1,7 @@
 
 import { getClient } from './composite_client.js';
 
-import { gql } from '@apollo/client'
+import { gql } from '@apollo/client/core/index.js'
 
 const CREATE_MUTATION = gql`
   mutation CreateTask($input: CreateTaskInput!) {
