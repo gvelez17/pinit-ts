@@ -20,7 +20,9 @@
                 "description": [
                     "**/{{COM:chatCommands.test}}** - {{REF:commandDescs.test}}",
                     "**/{{COM:chatCommands.info}}** - {{REF:commandDescs.info}}",
-                    "**/{{COM:chatCommands.todo}}** - {{REF:commandDescs.todo}}"
+                    "**/{{COM:chatCommands.todo}}** - {{REF:commandDescs.todo}}",
+
+                    "**/{{COM:chatCommands.listtodos}}** - {{REF:commandDescs.listtodos}}"
                 ],
                 "fields": [
                     {
@@ -44,6 +46,9 @@
             },
             "todo": {
                 "description": "Gotcha - making a task"
+            },
+            "listtodos": {
+                "description": "Here are the todos:"
             },
             "viewDateJoined": {
                 "description": "{{TARGET}} joined on {{DATE}}!"
@@ -187,6 +192,7 @@
             "link": "Get links to invite, support, etc.",
             "test": "Run the test command.",
             "todo": "Create a TODO task",
+            "listtodos": "List the TODO tasks",
             "translate": "View translation info."
         },
         "lists": {

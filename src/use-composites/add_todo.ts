@@ -30,6 +30,7 @@ export async function addTodo(content:any, assignee:any) {
         }
       }
     })
-    
+    console.log(result)
+
 
   }
