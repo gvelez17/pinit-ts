@@ -1,12 +1,13 @@
 {
     "bot": {
-        "name": "My Bot",
-        "author": "My Name"
+        "name": "PinIt",
+        "author": "Golda"
     },
     "chatCommands": {
         "help": "help",
         "info": "info",
-        "test": "test"
+        "test": "test",
+        "todo": "todo"
     },
     "userCommands": {
         "viewDateJoined": "View Date Joined"

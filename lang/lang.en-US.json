@@ -19,7 +19,8 @@
                 "title": "{{COM:bot.name}} - Commands",
                 "description": [
                     "**/{{COM:chatCommands.test}}** - {{REF:commandDescs.test}}",
-                    "**/{{COM:chatCommands.info}}** - {{REF:commandDescs.info}}"
+                    "**/{{COM:chatCommands.info}}** - {{REF:commandDescs.info}}",
+                    "**/{{COM:chatCommands.todo}}** - {{REF:commandDescs.todo}}"
                 ],
                 "fields": [
                     {
@@ -40,6 +41,9 @@
             },
             "test": {
                 "description": "Test command works!"
+            },
+            "todo": {
+                "description": "Gotcha - making a task"
             },
             "viewDateJoined": {
                 "description": "{{TARGET}} joined on {{DATE}}!"
@@ -182,6 +186,7 @@
             "info": "View bot info.",
             "link": "Get links to invite, support, etc.",
             "test": "Run the test command.",
+            "todo": "Create a TODO task",
             "translate": "View translation info."
         },
         "lists": {
