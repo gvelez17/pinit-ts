@@ -2,7 +2,7 @@ import { getClient } from './composite_client.js';
 
 import { gql } from '@apollo/client/core/index.js'
 
-const ALL_QUERY = gql`
+const VIEWER_QUERY = gql`
   query TaskList($cursor: String) {
     viewer {
       taskList(last: 100, before: $cursor) {
@@ -22,6 +22,22 @@ const ALL_QUERY = gql`
     }
   }
 `
+
+const ALL_QUERY = gql`
+query {
+        taskIndex(first:1000) {
+          edges {
+            node {
+              id
+              content
+              assignee
+              completed
+            }
+          }
+        }
+      }
+
+`
  
 
 export async function retrieveTodos() {
@@ -32,7 +48,9 @@ export async function retrieveTodos() {
         fetchPolicy: 'network-only'
       });
     console.log("Going to retrieve tasks")
-    const tasks = result.data.viewer.taskList.edges.map(({node}) => node).filter(({completed}) => !completed)
-    console.log("Got some tasks: " + JSON.stringify(tasks)) 
+//    const tasks = result.data.viewer.taskList.edges.map(({node}) => node).filter(({completed}) => !completed)
+    const tasks = result.data.taskIndex.edges.map(({node}) => node)
+
+    console.log("Got some tasks: " + JSON.stringify(tasks))
     return tasks;
   };
