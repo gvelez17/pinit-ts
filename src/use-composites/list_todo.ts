@@ -31,8 +31,8 @@ export async function retrieveTodos() {
         query: ALL_QUERY,
         fetchPolicy: 'network-only'
       });
-
+    console.log("Going to retrieve tasks")
     const tasks = result.data.viewer.taskList.edges.map(({node}) => node).filter(({completed}) => !completed)
-    
+    console.log("Got some tasks: " + JSON.stringify(tasks)) 
     return tasks;
   };
