@@ -1,5 +1,5 @@
 
-import { getClient } from './composite_client.js';
+import { getClient } from './task_composite_client.js';
 
 import { gql } from '@apollo/client/core/index.js'
 
