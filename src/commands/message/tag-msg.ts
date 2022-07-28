@@ -30,8 +30,10 @@ export class AddTag implements Command {
         const curator = null; // current logged in user, not author
         const who = `${msg.author.username}#${msg.author.discriminator}` 
 
-//        const res = await addTag(what, who)
-//        console.log(JSON.stringify(res))
+        await intr.reply("Your tag: ")
+        const tag = await intr.fetchReply()
+        const res = await addTag(what, tag, curator)
+        console.log(JSON.stringify("Added tag " + tag))
         await InteractionUtils.send(
             intr,
             Lang.getEmbed('displayEmbeds.addTag', data.lang(), {

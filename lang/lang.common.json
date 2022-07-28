@@ -14,7 +14,8 @@
     },
     "messageCommands": {
         "viewDateSent": "View Date Sent",
-        "markTodo": "Mark as a Todo task"
+        "markTodo": "Mark as a Todo task",
+        "addTag": "Tag and save"
     },
     "arguments": {
         "option": "option"
