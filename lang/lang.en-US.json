@@ -20,9 +20,8 @@
                 "description": [
                     "**/{{COM:chatCommands.test}}** - {{REF:commandDescs.test}}",
                     "**/{{COM:chatCommands.info}}** - {{REF:commandDescs.info}}",
-                    "**/{{COM:chatCommands.todo}}** - {{REF:commandDescs.todo}}",
 
-                    "**/{{COM:chatCommands.listtodos}}** - {{REF:commandDescs.listtodos}}"
+                    "**/{{COM:chatCommands.todos}}** - {{REF:commandDescs.todos}}"
                 ],
                 "fields": [
                     {
@@ -44,13 +43,10 @@
             "test": {
                 "description": "Test command works!"
             },
-            "todo": {
-                "description": "Gotcha - making a task"
-            },
-            "listtodos": {
+            "todos": {
                 "description": "Here are the todos:"
             },
-            "marktodo": {
+            "markTodo": {
                 "description": "Mark this message as a TODO item"
             },
             "viewDateJoined": {
@@ -194,8 +190,7 @@
             "info": "View bot info.",
             "link": "Get links to invite, support, etc.",
             "test": "Run the test command.",
-            "todo": "Create a TODO task",
-            "listtodos": "List the TODO tasks",
+            "todos": "List TODO tasks",
             "translate": "View translation info."
         },
         "lists": {

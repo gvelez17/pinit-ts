@@ -3,8 +3,7 @@ import { Options } from 'discord.js';
 import { createRequire } from 'node:module';
 
 import { Button } from './buttons/index.js';
-import { HelpCommand, InfoCommand, TestCommand, TodoCommand,
-         ListTodosCommand
+import { HelpCommand, InfoCommand, TestCommand, TodosCommand,
 
        } from './commands/chat/index.js';
 import { Command } from './commands/index.js';
@@ -50,8 +49,7 @@ async function start(): Promise<void> {
         new HelpCommand(),
         new InfoCommand(),
         new TestCommand(),
-        new TodoCommand(),
-        new ListTodosCommand(),
+        new TodosCommand(),
         // User Context Commands
         new ViewDateJoined(),
         // Message Context Commands

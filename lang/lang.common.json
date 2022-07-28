@@ -7,8 +7,7 @@
         "help": "help",
         "info": "info",
         "test": "test",
-        "todo": "todo",
-        "listtodos": "listtodos"
+        "todos": "todos"
     },
     "userCommands": {
         "viewDateJoined": "View Date Joined"

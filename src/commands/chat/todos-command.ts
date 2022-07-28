@@ -12,11 +12,11 @@ import { InteractionUtils } from '../../utils/index.js';
 import { Command, CommandDeferType } from '../index.js';
 
 
-export class ListTodosCommand implements Command {
+export class TodosCommand implements Command {
     public metadata: RESTPostAPIChatInputApplicationCommandsJSONBody = {
         type: ApplicationCommandType.ChatInput,
-        name: Lang.getCom('chatCommands.listtodos'),
-        description: Lang.getRef('commandDescs.listtodos', Lang.Default),
+        name: Lang.getCom('chatCommands.todos'),
+        description: Lang.getRef('commandDescs.todos', Lang.Default),
         dm_permission: true,
         default_member_permissions: undefined,
     };
@@ -26,7 +26,7 @@ export class ListTodosCommand implements Command {
 
     public async execute(intr: CommandInteraction, data: EventData): Promise<void> {
         let tasks = await retrieveTodos()
-        await InteractionUtils.send(intr, Lang.getEmbed('displayEmbeds.listtodos', data.lang()));
+        await InteractionUtils.send(intr, Lang.getEmbed('displayEmbeds.todos', data.lang()));
         await InteractionUtils.send(intr, JSON.stringify(tasks))
     }
 }

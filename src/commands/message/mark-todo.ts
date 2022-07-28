@@ -25,8 +25,11 @@ export class MarkTodo implements Command {
     public requireClientPerms: PermissionString[] = [];
 
     public async execute(intr: MessageContextMenuInteraction, data: EventData): Promise<void> {
-        addTodo('what', 'who2')
-        console.log(JSON.stringify(data))
+        const msg = intr.options.data[0].message
+        const what = msg.content
+        const who = `${msg.author.username}#${msg.author.discriminator}` 
+        const res = await addTodo(what, who)
+        console.log(JSON.stringify(res))
         await InteractionUtils.send(
             intr,
             Lang.getEmbed('displayEmbeds.markTodo', data.lang(), {
