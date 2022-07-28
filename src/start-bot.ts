@@ -7,7 +7,7 @@ import { HelpCommand, InfoCommand, TestCommand, TodosCommand,
 
        } from './commands/chat/index.js';
 import { Command } from './commands/index.js';
-import { ViewDateSent, MarkTodo } from './commands/message/index.js';
+import { ViewDateSent, MarkTodo, AddTag } from './commands/message/index.js';
 import { ViewDateJoined } from './commands/user/index.js';
 import {
     ButtonHandler,
@@ -53,6 +53,7 @@ async function start(): Promise<void> {
         // User Context Commands
         new ViewDateJoined(),
         // Message Context Commands
+        new AddTag(),
         new MarkTodo(),
         new ViewDateSent(),
         // TODO: Add new commands here

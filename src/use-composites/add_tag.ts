@@ -27,7 +27,7 @@ const CREATE_TAG_MUTATION = gql`
   }
 `
 
-export async function addTag(what!:string, tag!:string, curator:string, context_url:string) {
+export async function addTag(what:string, tag:string, curator?:string, context_url?:string) {
 
     const client = await getClient()
 

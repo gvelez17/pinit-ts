@@ -7,7 +7,7 @@ import { Message, MessageContextMenuInteraction, PermissionString } from 'discor
 import { RateLimiter } from 'discord.js-rate-limiter';
 import { DateTime } from 'luxon';
 
-//import { addTag } from '../../use-composites/add_tag.js'
+import { addTag } from '../../use-composites/add_tag.js'
 import { EventData } from '../../models/internal-models.js';
 import { Lang } from '../../services/index.js';
 import { InteractionUtils } from '../../utils/index.js';
@@ -32,7 +32,7 @@ export class AddTag implements Command {
 
         await intr.reply("Your tag: ")
         const tag = await intr.fetchReply()
-        const res = await addTag(what, tag, curator)
+        const res = await addTag(what, JSON.stringify(tag), curator)
         console.log(JSON.stringify("Added tag " + tag))
         await InteractionUtils.send(
             intr,
