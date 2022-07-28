@@ -25,7 +25,8 @@ export class ListTodosCommand implements Command {
     public requireClientPerms: PermissionString[] = [];
 
     public async execute(intr: CommandInteraction, data: EventData): Promise<void> {
-        let tasks = retrieveTodos()
+        let tasks = await retrieveTodos()
         await InteractionUtils.send(intr, Lang.getEmbed('displayEmbeds.listtodos', data.lang()));
+        await InteractionUtils.send(intr, JSON.stringify(tasks))
     }
 }

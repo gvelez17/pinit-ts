@@ -50,6 +50,9 @@
             "listtodos": {
                 "description": "Here are the todos:"
             },
+            "marktodo": {
+                "description": "Mark this message as a TODO item"
+            },
             "viewDateJoined": {
                 "description": "{{TARGET}} joined on {{DATE}}!"
             },

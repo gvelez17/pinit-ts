@@ -48,7 +48,7 @@ export async function retrieveTodos() {
         fetchPolicy: 'network-only'
       });
     console.log("Going to retrieve tasks")
-//    const tasks = result.data.viewer.taskList.edges.map(({node}) => node).filter(({completed}) => !completed)
+//    const tasks = result.data.viewer.taskList.edges.map(({node}) => node)
     const tasks = result.data.taskIndex.edges.map(({node}) => node)
 
     console.log("Got some tasks: " + JSON.stringify(tasks))

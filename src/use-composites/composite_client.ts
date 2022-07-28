@@ -40,6 +40,7 @@ export async function getClient(): Promise<ApolloClient<NormalizedCacheObject>>{
   const did = new DID({ provider, resolver })
 
   await did.authenticate()
+  console.log("DID: " + JSON.stringify(did))
 
   composeClientInstance.setDID(did)
 
