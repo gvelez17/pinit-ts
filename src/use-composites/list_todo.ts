@@ -23,7 +23,7 @@ const VIEWER_QUERY = gql`
   }
 `
 
-const ALL_QUERY = gql`
+const ALL_TASKS_QUERY = gql`
 query {
         taskIndex(first:1000) {
           edges {
@@ -38,19 +38,43 @@ query {
       }
 
 `
+
+const ALL_MESSAGES_QUERY = gql`
+  query {
+    integrationMessageIndex(first:1000) {
+      edges {
+        node {
+          id
+          date
+          from
+          type
+          message
+        }
+      }
+    }
+  }
+`
  
 
 export async function retrieveTodos() {
     const client = await getClient()
 
-    const result = await client.query({
-        query: ALL_QUERY,
+    const [allTaskResults, allMessagesResults] = await Promise.all([
+      client.query({
+        query: ALL_TASKS_QUERY,
         fetchPolicy: 'network-only'
-      });
-    console.log("Going to retrieve tasks")
-//    const tasks = result.data.viewer.taskList.edges.map(({node}) => node)
-    const tasks = result.data.taskIndex.edges.map(({node}) => node)
+      }),
+      client.query({
+        query: ALL_MESSAGES_QUERY,
+        fetchPolicy: 'network-only'
+      }),
+    ])
+      
+    const messages = Object.fromEntries(allMessagesResults.data.integrationMessageIndex.edges.map(({node}) => [node.id, node.message]))
 
-    console.log("Got some tasks: " + JSON.stringify(tasks))
+    const tasks = allTaskResults.data.taskIndex.edges.filter(({node}) => !node.completed).map(({node}) => {
+      return Object.assign({}, node, {content: messages[node.content] || node.content})
+    })
+
     return tasks;
   };

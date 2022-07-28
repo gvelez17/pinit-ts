@@ -27,6 +27,12 @@ export class TodosCommand implements Command {
     public async execute(intr: CommandInteraction, data: EventData): Promise<void> {
         let tasks = await retrieveTodos()
         await InteractionUtils.send(intr, Lang.getEmbed('displayEmbeds.todos', data.lang()));
-        await InteractionUtils.send(intr, JSON.stringify(tasks))
+        for (let todo of tasks) {
+            if (! todo.completed) {
+                let msg = `*${todo.content}* assigned to @${todo.assignee} `
+                await InteractionUtils.send(intr, msg)
+            }
+        }
+
     }
 }

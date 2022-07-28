@@ -3,10 +3,21 @@ import { getClient } from './composite_client.js';
 
 import { gql } from '@apollo/client/core/index.js'
 
-const CREATE_MUTATION = gql`
+const CREATE_INTEGRATION_MESSAGE_MUTATION = gql`
+  mutation CreateIntegrationMessage($input: CreateIntegrationMessageInput!) {
+    createIntegrationMessage(input: $input) {
+      document {
+        id
+      }
+    }
+  }
+`
+
+const CREATE_TASK_MUTATION = gql`
   mutation CreateTask($input: CreateTaskInput!) {
     createTask(input: $input) {
       document {
+        id
         content
         assignee
         completed
@@ -18,12 +29,27 @@ const CREATE_MUTATION = gql`
 export async function addTodo(content:any, assignee:any) {
     // // figure out which mutation to use and with what parameters 
     const client = await getClient()
-    const result = await client.mutate({
-      mutation: CREATE_MUTATION,
+
+    const createMessageResult = await client.mutate({
+      mutation: CREATE_INTEGRATION_MESSAGE_MUTATION,
       variables: {
         input: {
           content: {
-            content: content,
+            date: new Date(Date.now()).toISOString(),
+            from: 'Discord',
+            type: 'Task',
+            message: content
+          }
+        }
+      }
+    })
+
+    const result = await client.mutate({
+      mutation: CREATE_TASK_MUTATION,
+      variables: {
+        input: {
+          content: {
+            content: createMessageResult.data.createIntegrationMessage.document.id,
             assignee: assignee,
             completed: false,
           }
@@ -31,6 +57,5 @@ export async function addTodo(content:any, assignee:any) {
       }
     })
     console.log(result)
-
 
   }
